@@ -2,7 +2,9 @@
 
 The goodies include:
 
-- VR compatible 
+- VR compatible
+
+
 - Movement controls
 - A custom component
 
