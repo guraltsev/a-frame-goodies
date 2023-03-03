@@ -31,16 +31,13 @@ AFRAME.registerComponent("unfolded-cube-position", {
 
     this.globalPosition = this.el.object3D.position
     this.trackCurrentFace(t, dt);
-    DEBUG >= debugINFO && this.throttledLog(t, dt, "");
+    DEBUG >= debugDEBUG && this.throttledLog(t, dt, "");
 
   },
 
   // A logging fuction
-  log: function(t, dt, str) {
-    console.log(str);
-    console.log("currentFace = " + this.currentFace);
-    console.log("currentDirection = " + this.currentDirection);
-    // console.log("currentPosition = " + this.globalPosition.x + " " + this.globalPosition.y + " " + this.globalPosition.z);
+  log: function(t, dt, thingToLog) {
+    console.log(thingToLog);
   },
 
   // A function to keep track of the face
@@ -72,9 +69,10 @@ AFRAME.registerComponent("unfolded-cube-position", {
     }
 
     if (jump) {
-      DEBUG >= debugINFO && this.log(t, dt, String(nextFace) + " " + String(nextDirection));
+      DEBUG >= debugINFO && this.log(t, dt, "Transitioning to: [nextFace, nextDirection] = [" + String(nextFace) + ", " + String(nextDirection) + "]");
       this.currentFace = nextFace;
       this.currentDirection = (360 + nextDirection) % 360
+      DEBUG >= debugINFO && this.log(t, dt, "currentFace=" + this.currentFace + " ; " + "currentDirection=" + this.currentDirection);
     }
 
   },
